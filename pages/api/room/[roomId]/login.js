@@ -7,15 +7,6 @@ export default function login(req, res) {
     const { username, password } = req.body;
 
     //validate body
-    if (
-      typeof username !== "string" ||
-      username.length === 0 ||
-      typeof password !== "string" ||
-      password.length === 0
-    )
-      return res
-        .status(400)
-        .json({ ok: false, message: "Username or password cannot be empty" });
 
     const users = readUsersDB();
 

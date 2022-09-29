@@ -10,6 +10,12 @@ export default function roomRoute(req, res) {
     });
   }
   const chatrooms = readChatRoomsDB();
-
   //create room data and return response
+  const result = chatrooms.map((x) => ({
+    roomId: x.roomId,
+    roomName: x.roomName,
+  }));
+  if (req.method === "GET") {
+    return res.json({ ok: true, rooms: result });
+  }
 }
